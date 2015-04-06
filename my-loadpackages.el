@@ -4,6 +4,8 @@
 ;; loading package list from another directory
 (load "~/.emacs.d/my-packages.el")
 
+(add-to-list 'load-path "~/.emacs.d/")
+
 ;; flycheck-mode
 (require 'flycheck)
 (global-flycheck-mode)
@@ -17,6 +19,7 @@
 
 ;; autocomplete
 (require 'auto-complete)
+(ac-config-default)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 
 ;; yasnippet
@@ -116,3 +119,13 @@
 (push '("*helm mini*" :height 20) popwin:special-display-config)
 (push '("*Helm Find Files*" :height 20) popwin:special-display-config)
 
+;; built-in
+(require 'bs)
+(setq bs-configurations
+      '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
+ 
+(global-set-key (kbd "<f2>") 'bs-show)
+
+(require 'linum+)
+(setq linum-format " %d ")
+(global-linum-mode 1)
