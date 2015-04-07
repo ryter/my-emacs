@@ -17,5 +17,13 @@
 
 ;; Don't want any .saves files
 (setq auto-save-list-file-name nil) 
+
 ;; Don't want any auto saving
 (setq auto-save-default nil) 
+
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+
+;; Options -> Set default font
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
+(set-default-font "DejaVu Sans Mono-10")

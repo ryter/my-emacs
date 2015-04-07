@@ -7,9 +7,9 @@
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;; flycheck-mode
-(require 'flycheck)
-(global-flycheck-mode)
-(load "~/.emacs.d/my-flycheck.el")
+;;(require 'flycheck)
+;;(global-flycheck-mode)
+;;(load "~/.emacs.d/my-flycheck.el")
 
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
@@ -76,16 +76,28 @@
 
 ;; web-mode
 (require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
-(setq web-mode-engine-alist
-      '(("django" . "\\.html\\'")))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.inc\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+
+(setq web-mode-enable-current-column-highlight t)
 
 ;; emmet-mode
 (require 'emmet-mode)
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+(setq emmet-move-cursor-between-quotes t) ;; default nil
+
 
 ; fiplr
 (require 'fiplr)
