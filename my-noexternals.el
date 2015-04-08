@@ -27,3 +27,5 @@
 ;; Options -> Set default font
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 (set-default-font "DejaVu Sans Mono-10")
+
+(global-set-key (kbd "C-c l") 'indent-region)
