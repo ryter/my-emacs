@@ -27,7 +27,7 @@
 (yas-global-mode 1)
 (yas-load-directory "~/.emacs.d/snippets")
 (add-hook 'term-mode-hook (lambda()
-        (setq yas-dont-activate t)))
+                            (setq yas-dont-activate t)))
 ;; add snippets to autocomplete.el
 ;; (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
 
@@ -101,11 +101,11 @@
 (setq emmet-move-cursor-between-quotes t) ;; default nil
 
 
-; fiplr
+                                        ; fiplr
 (require 'fiplr)
 (global-set-key (kbd "C-x C-g") 'fiplr-find-file)
 
-; popwin
+                                        ; popwin
 (require 'popwin)
 (popwin-mode 1)
 
@@ -128,7 +128,7 @@
 
 (define-key global-map (kbd "C-c C-f") 'helm-for-files)
 
-; (setq display-buffer-function 'popwin:display-buffer)
+                                        ; (setq display-buffer-function 'popwin:display-buffer)
 (push '("*helm M-x*" :height 20) popwin:special-display-config)
 (push '("*helm mini*" :height 20) popwin:special-display-config)
 (push '("*Helm Find Files*" :height 20) popwin:special-display-config)
@@ -137,9 +137,11 @@
 (require 'bs)
 (setq bs-configurations
       '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
- 
+
 (global-set-key (kbd "<f2>") 'bs-show)
 
 (require 'linum+)
 (setq linum-format " %d ")
 (global-linum-mode 1)
+
+(electric-pair-mode 1)
