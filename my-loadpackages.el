@@ -128,7 +128,7 @@
 
 (define-key global-map (kbd "C-c C-f") 'helm-for-files)
 
-                                        ; (setq display-buffer-function 'popwin:display-buffer)
+;; (setq display-buffer-function 'popwin:display-buffer)
 (push '("*helm M-x*" :height 20) popwin:special-display-config)
 (push '("*helm mini*" :height 20) popwin:special-display-config)
 (push '("*Helm Find Files*" :height 20) popwin:special-display-config)
@@ -143,5 +143,3 @@
 (require 'linum+)
 (setq linum-format " %d ")
 (global-linum-mode 1)
-
-(electric-pair-mode 1)

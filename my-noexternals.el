@@ -12,6 +12,12 @@
 ;; no lockfiles
 (setq create-lockfiles nil)
 
+;; electric pair
+(electric-pair-mode 1)
+
+;; no startup msg  
+(setq inhibit-startup-message t) 
+
 ;; Don't want any backup files
 (setq make-backup-files nil) 
 
@@ -25,7 +31,12 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Options -> Set default font
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
-(set-default-font "DejaVu Sans Mono-10")
+;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
+;; (set-default-font "DejaVu Sans Mono-10")
 
-(global-set-key (kbd "C-c l") 'indent-region)
+;; (add-to-list 'default-frame-alist '(font . "Anonymous Pro-11"))
+;; (set-default-font "Anonymous Pro-11")
+
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-10"))
+(set-default-font "Liberation Mono-10")
+

@@ -2,3 +2,4 @@
 (load "~/.emacs.d/my-noexternals.el")
 (load "~/.emacs.d/my-style.el")
 (load "~/.emacs.d/my-themes.el")
+(load "~/.emacs.d/my-key.el")
