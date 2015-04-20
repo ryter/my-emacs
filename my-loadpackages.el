@@ -58,15 +58,9 @@
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c a") 'ace-jump-mode)
 
-;; (require 'yalinum)
-;; (global-yalinum-mode t)
-
-;; (require 'linum-relative)
-;; (linum-mode 1)
-;; (linum-on)
-
 (require 'ido-vertical-mode)
 (ido-vertical-mode)
+
 (require 'flx-ido)
 (ido-mode 1)
 (ido-everywhere 1)
@@ -75,23 +69,19 @@
 (setq ido-use-faces nil)
 
 ;; web-mode
-;; (require 'web-mode)
-;; (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.tpl\\.inc\\.php\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-style-padding 1)
 
-;; (setq web-mode-markup-indent-offset 2)
-;; (setq web-mode-css-indent-offset 2)
-;; (setq web-mode-code-indent-offset 2)
-
-;; (setq web-mode-enable-current-column-highlight t)
-
-(add-to-list 'auto-mode-alist '("\\.inc$" . sgml-mode))
+;; (add-to-list 'auto-mode-alist '("\\.inc$" . sgml-mode))
 
 ;; emmet-mode
 (require 'emmet-mode)
@@ -101,11 +91,23 @@
 (setq emmet-move-cursor-between-quotes t) ;; default nil
 
 
-                                        ; fiplr
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(defun scss-custom ()
+  "scss-mode-hook"
+  (and
+   (set (make-local-variable 'css-indent-offset) 2)
+   (set (make-local-variable 'scss-compile-at-save) nil)
+   )
+  )
+(add-hook 'scss-mode-hook
+          '(lambda() (scss-custom)))
+
+;; fiplr
 (require 'fiplr)
 (global-set-key (kbd "C-x C-g") 'fiplr-find-file)
 
-                                        ; popwin
+;; popwin
 (require 'popwin)
 (popwin-mode 1)
 

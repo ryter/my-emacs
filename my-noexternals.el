@@ -40,3 +40,9 @@
 (add-to-list 'default-frame-alist '(font . "Liberation Mono-10"))
 (set-default-font "Liberation Mono-10")
 
+;; transparent 
+
+(set-frame-parameter (selected-frame) 'alpha '(85 50))
+(add-to-list 'default-frame-alist '(alpha 85 50))
+
+(set-face-attribute 'default nil :background "black")
