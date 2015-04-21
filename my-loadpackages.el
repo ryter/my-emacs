@@ -81,6 +81,11 @@
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-style-padding 1)
 
+(custom-set-faces
+ '(web-mode-current-element-highlight-face
+   ((t (:foreground "#E65100"))))
+)
+
 ;; (add-to-list 'auto-mode-alist '("\\.inc$" . sgml-mode))
 
 ;; emmet-mode
