@@ -46,3 +46,11 @@
 (add-to-list 'default-frame-alist '(alpha 85 50))
 
 (set-face-attribute 'default nil :background "black")
+
+;; auto update file
+(global-auto-revert-mode 1)
+
+;; highlight line
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#3e4446")
+(set-face-foreground 'highlight nil)
