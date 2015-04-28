@@ -84,7 +84,7 @@
 (custom-set-faces
  '(web-mode-current-element-highlight-face
    ((t (:foreground "#E65100"))))
-)
+ )
 
 ;; (add-to-list 'auto-mode-alist '("\\.inc$" . sgml-mode))
 
@@ -150,3 +150,17 @@
 (require 'linum+)
 (setq linum-format " %d ")
 (global-linum-mode 1)
+
+;; project 
+
+(add-to-list 'load-path "~/emacs.d/")
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-indexing-method 'native)
+(setq projectile-enable-caching t)
+(setq projectile-completion-system 'default)
+
+;; (define-key projectile-mode-map [?\s-d] 'projectile-find-dir)
+;; (define-key projectile-mode-map [?\s-p] 'projectile-switch-project)
+;; (define-key projectile-mode-map [?\s-f] 'projectile-find-file)
+;; (define-key projectile-mode-map [?\s-g] 'projectile-grep)
