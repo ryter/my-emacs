@@ -5,7 +5,7 @@
 (setq use-dialog-box nil)
 
 ;; Remove scrollbars, menu bars, and toolbars
-;;(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
@@ -42,8 +42,8 @@
 
 ;; transparent 
 
-(set-frame-parameter (selected-frame) 'alpha '(85 50))
-(add-to-list 'default-frame-alist '(alpha 85 50))
+;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
+;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
 (set-face-attribute 'default nil :background "black")
 
@@ -52,5 +52,8 @@
 
 ;; highlight line
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#3e4446")
-(set-face-foreground 'highlight nil)
+(set-face-background 'hl-line "#424242")
+(set-face-foreground 'highlight "#ffffff")
+
+(setq-default cursor-type 'bar) 
+(set-cursor-color "#DD2C00") 
