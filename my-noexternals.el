@@ -45,15 +45,18 @@
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
 
-(set-face-attribute 'default nil :background "black")
+;;(set-face-attribute 'default nil :background "black")
 
 ;; auto update file
 (global-auto-revert-mode 1)
 
 ;; highlight line
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#424242")
-(set-face-foreground 'highlight "#ffffff")
 
 (setq-default cursor-type 'bar) 
-(set-cursor-color "#DD2C00") 
+;; (set-cursor-color "#DD2C00") 
+
+(require 'fringe) 
+(fringe-mode '(0 . 0))
+
+

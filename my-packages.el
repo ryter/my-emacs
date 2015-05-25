@@ -20,6 +20,7 @@
     flx
     flx-ido
     flycheck
+    powerline
     flymake-cursor
     golden-ratio
     helm

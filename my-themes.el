@@ -1,3 +1,3 @@
-(add-to-list 'custom-theme-load-path "~/.emacs.d/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
-(load-theme 'lush t)
+(load-theme 'metro t)
