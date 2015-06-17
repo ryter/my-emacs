@@ -13,8 +13,10 @@
     lush-theme
     auto-complete
     color-theme
+    moe-theme
     emmet-mode
     elpy
+    ergoemacs-mode
     dired+
     fiplr
     flx
@@ -25,6 +27,7 @@
     golden-ratio
     helm
     highlight-indentation
+    hlinum
     ido-vertical-mode
     js2-mode
     scss-mode
@@ -35,10 +38,13 @@
     rainbow-mode
     visual-regexp
     web-mode
+    web-beautify
     handlebars-mode
     php-mode
     yaml-mode
     yasnippet
+    markdown-mode
+    undo-tree
    ) "A list of packages to ensure are installed at launch.")
 
 ;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name

@@ -3,9 +3,6 @@
 
 ;; loading package list from another directory
 (load "~/.emacs.d/my-packages.el")
-
-(add-to-list 'load-path "~/.emacs.d/")
-
 ;; flycheck-mode
 ;;(require 'flycheck)
 ;;(global-flycheck-mode)
@@ -41,12 +38,13 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 
 ;; magit keybinding
-;; (require 'magit)
-;; (define-key global-map (kbd "C-c g s") 'magit-status)
-;; (define-key global-map (kbd "C-c g p") 'magit-pull)
-;; (define-key global-map (kbd "C-c g b") 'magit-blame-mode)
-;; (define-key global-map (kbd "C-c g l") 'magit-log)
-;; (define-key global-map (kbd "C-c g c") 'magit-checkout)
+(require 'magit)
+(setq magit-last-seen-setup-instructions "1.4.0")
+(define-key global-map (kbd "C-c g s") 'magit-status)
+(define-key global-map (kbd "C-c g p") 'magit-pull)
+(define-key global-map (kbd "C-c g b") 'magit-blame-mode)
+(define-key global-map (kbd "C-c g l") 'magit-log)
+(define-key global-map (kbd "C-c g c") 'magit-checkout)
 
 ;; multiple cursors
 (require 'multiple-cursors)
@@ -86,7 +84,6 @@
    ((t (:foreground "#E65100"))))
  )
 
-;; (add-to-list 'auto-mode-alist '("\\.inc$" . sgml-mode))
 
 ;; emmet-mode
 (require 'emmet-mode)
@@ -147,10 +144,15 @@
 
 (global-set-key (kbd "<f2>") 'bs-show)
 
-(require 'linum+)
-(setq linum-format " %d ")
-(global-linum-mode 1)
+;; (require 'linum+)
+;; (setq linum-format " %d ")
+;; (global-linum-mode 1)
 
+;; (require 'hlinum)
+;; (hlinum-activate)
+(global-linum-mode 1)
+;; (setq linum-format " %d ")
+(setq linum-format "%4d \u2502")
 ;; project 
 
 (add-to-list 'load-path "~/emacs.d/")
@@ -167,3 +169,49 @@
 
 (require 'powerline)
 (powerline-default-theme)
+
+(setq ergoemacs-theme nil)
+(setq ergoemacs-keyboard-layout "us")
+(require 'ergoemacs-mode)
+(ergoemacs-mode 1)
+
+(eval-after-load 'js2-mode
+  '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
+;; Or if you're using 'js-mode' (a.k.a 'javascript-mode')
+(eval-after-load 'js
+  '(define-key js-mode-map (kbd "C-c b") 'web-beautify-js))
+
+(eval-after-load 'json-mode
+  '(define-key json-mode-map (kbd "C-c b") 'web-beautify-js))
+
+(eval-after-load 'sgml-mode
+  '(define-key html-mode-map (kbd "C-c b") 'web-beautify-html))
+
+(eval-after-load 'css-mode
+  '(define-key css-mode-map (kbd "C-c b") 'web-beautify-css))
+
+(eval-after-load 'js2-mode
+  '(add-hook 'js2-mode-hook
+             (lambda ()
+               (add-hook 'before-save-hook 'web-beautify-js-buffer t t))))
+
+;; Or if you're using 'js-mode' (a.k.a 'javascript-mode')
+(eval-after-load 'js
+  '(add-hook 'js-mode-hook
+             (lambda ()
+               (add-hook 'before-save-hook 'web-beautify-js-buffer t t))))
+
+(eval-after-load 'json-mode
+  '(add-hook 'json-mode-hook
+             (lambda ()
+               (add-hook 'before-save-hook 'web-beautify-js-buffer t t))))
+
+(eval-after-load 'sgml-mode
+  '(add-hook 'html-mode-hook
+             (lambda ()
+               (add-hook 'before-save-hook 'web-beautify-html-buffer t t))))
+
+(eval-after-load 'css-mode
+  '(add-hook 'css-mode-hook
+             (lambda ()
+               (add-hook 'before-save-hook 'web-beautify-css-buffer t t))))
