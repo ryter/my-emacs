@@ -45,6 +45,7 @@
     yasnippet
     markdown-mode
     undo-tree
+    indent-guide
    ) "A list of packages to ensure are installed at launch.")
 
 ;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name

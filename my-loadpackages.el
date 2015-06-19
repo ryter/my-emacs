@@ -142,7 +142,7 @@
 (setq bs-configurations
       '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
 
-(global-set-key (kbd "<f2>") 'bs-show)
+(global-set-key (kbd "C-c <f2>") 'bs-show)
 
 ;; (require 'linum+)
 ;; (setq linum-format " %d ")
@@ -215,3 +215,7 @@
   '(add-hook 'css-mode-hook
              (lambda ()
                (add-hook 'before-save-hook 'web-beautify-css-buffer t t))))
+
+;; show vertical lines to guide indentation
+(require 'indent-guide)
+(indent-guide-global-mode)
