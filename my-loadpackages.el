@@ -3,10 +3,6 @@
 
 ;; loading package list from another directory
 (load "~/.emacs.d/my-packages.el")
-;; flycheck-mode
-;;(require 'flycheck)
-;;(global-flycheck-mode)
-;;(load "~/.emacs.d/my-flycheck.el")
 
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
@@ -25,8 +21,6 @@
 (yas-load-directory "~/.emacs.d/snippets")
 (add-hook 'term-mode-hook (lambda()
                             (setq yas-dont-activate t)))
-;; add snippets to autocomplete.el
-;; (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
 
 ;; js2-mode
 (require 'js2-mode)
@@ -162,18 +156,8 @@
 (setq projectile-enable-caching t)
 (setq projectile-completion-system 'default)
 
-;; (define-key projectile-mode-map [?\s-d] 'projectile-find-dir)
-;; (define-key projectile-mode-map [?\s-p] 'projectile-switch-project)
-;; (define-key projectile-mode-map [?\s-f] 'projectile-find-file)
-;; (define-key projectile-mode-map [?\s-g] 'projectile-grep)
-
-(require 'powerline)
-(powerline-default-theme)
-
-(setq ergoemacs-theme nil)
-(setq ergoemacs-keyboard-layout "us")
-(require 'ergoemacs-mode)
-(ergoemacs-mode 1)
+;; (require 'powerline)
+;; (powerline-default-theme)
 
 (eval-after-load 'js2-mode
   '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
@@ -219,3 +203,6 @@
 ;; show vertical lines to guide indentation
 (require 'indent-guide)
 (indent-guide-global-mode)
+
+(sml/setup)
+(setq sml/theme 'dark)

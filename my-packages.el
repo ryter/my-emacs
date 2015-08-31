@@ -8,13 +8,11 @@
 (defvar alex-packages
   '(
     ace-jump-mode
-    afternoon-theme
-    firecode-theme
-    lush-theme
     auto-complete
     color-theme
-    moe-theme
+    zenburn-theme
     emmet-mode
+    smart-mode-line
     elpy
     ergoemacs-mode
     dired+
@@ -22,7 +20,6 @@
     flx
     flx-ido
     flycheck
-    powerline
     flymake-cursor
     golden-ratio
     helm

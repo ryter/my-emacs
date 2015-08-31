@@ -37,8 +37,8 @@
 ;; (add-to-list 'default-frame-alist '(font . "Anonymous Pro-11"))
 ;; (set-default-font "Anonymous Pro-11")
 
-(add-to-list 'default-frame-alist '(font . "Liberation Mono-10"))
-(set-default-font "Liberation Mono-10")
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-9"))
+(set-default-font "Liberation Mono-9")
 
 ;; transparent 
 
@@ -58,5 +58,7 @@
 
 (require 'fringe) 
 (fringe-mode '(0 . 0))
+
+(set-face-attribute 'region nil :background "#2196F3" :foreground "#ffffff")
 
 
