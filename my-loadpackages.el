@@ -72,7 +72,7 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-style-padding 1)
-
+(setq web-mode-enable-current-column-highlight t)
 (custom-set-faces
  '(web-mode-current-element-highlight-face
    ((t (:foreground "#E65100"))))
@@ -200,9 +200,5 @@
              (lambda ()
                (add-hook 'before-save-hook 'web-beautify-css-buffer t t))))
 
-;; show vertical lines to guide indentation
-(require 'indent-guide)
-(indent-guide-global-mode)
 
-(sml/setup)
-(setq sml/theme 'dark)
+
