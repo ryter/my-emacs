@@ -26,6 +26,13 @@
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+;; (require 'flymake-jslint)
+;; (add-hook 'js-mode-hook 'flymake-jslint-load)
+
+
+(require 'slim-mode)
+
+(custom-set-variables '(coffee-tab-width 2))
 ;; visual-regexp
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
@@ -98,6 +105,8 @@
   )
 (add-hook 'scss-mode-hook
           '(lambda() (scss-custom)))
+
+;; less-mode
 
 ;; fiplr
 (require 'fiplr)
@@ -200,5 +209,36 @@
              (lambda ()
                (add-hook 'before-save-hook 'web-beautify-css-buffer t t))))
 
+(require 'handlebars-mode)
+
+(require 'mic-paren)
+
+(require 'js2-refactor)
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
 
 
+(require 'rinari)
+(global-rinari-mode)
+
+(add-to-list 'yas-snippet-dirs "/path/to/angularjs-mode/snippets")
+(add-to-list 'ac-dictionary-directories "/path/to/angularjs-mode/ac-dict")
+(add-to-list 'ac-modes 'angular-mode)
+(add-to-list 'ac-modes 'angular-html-mode)
+
+(require 'tern)
+(require 'tern-auto-complete)
+
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
+
+(setq projectile-switch-project-action 'projectile-dired)
+(setq projectile-switch-project-action 'projectile-find-dir)
+
+(require 'golden-ratio)
+(golden-ratio-mode 1)
+
+;; (require 'neotree)
+;; (global-set-key [f8] 'neotree-toggle)
