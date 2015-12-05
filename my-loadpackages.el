@@ -242,3 +242,6 @@
 
 ;; (require 'neotree)
 ;; (global-set-key [f8] 'neotree-toggle)
+
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")

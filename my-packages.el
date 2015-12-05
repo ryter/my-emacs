@@ -55,6 +55,7 @@
     powerline
     moe-theme
     golden-ratio
+    multi-term
     ;; neotree
    ) "A list of packages to ensure are installed at launch.")
 
