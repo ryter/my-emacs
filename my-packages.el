@@ -7,16 +7,27 @@
 
 (defvar alex-packages
   '(
+    editorconfig
+    gnuplot-mode
+    autopair
+    pabbrev
     mic-paren
     ace-jump-mode
     auto-complete
+    ac-alchemist
+    ac-anaconda
+    ac-emmet
+    ac-ispell
+    ac-slime
     color-theme
     zenburn-theme
-    emmet-mode
+    ;; emmet-mode
+    rainbow-delimiters
+    material-theme
     handlebars-mode
     elpy
     slim-mode
-    angularjs-mode
+    dash
     dired+
     fiplr
     flx
@@ -33,6 +44,7 @@
     coffee-mode
     flymake-jslint
     scss-mode
+    helm-css-scss
     magit
     multiple-cursors
     popwin
@@ -47,16 +59,24 @@
     yasnippet
     markdown-mode
     undo-tree
+    neotree
     rinari
     tern
     tern-auto-complete
+    tj-mode
     less-css-mode
     ag
+    grizzl
     powerline
     moe-theme
     golden-ratio
     multi-term
-    ;; neotree
+    evil
+    ecb
+    stylus-mode
+    ample-theme
+    evil-matchit
+    find-file-in-project
    ) "A list of packages to ensure are installed at launch.")
 
 ;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name

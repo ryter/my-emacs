@@ -7,13 +7,27 @@
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 
+
 ;; yaml-mode
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+
+
+(require 'rainbow-delimiters)
 
 ;; autocomplete
 (require 'auto-complete)
 (ac-config-default)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(add-hook 'elixir-mode-hook 'ac-alchemist-setup)
+
+(require 'ac-slime)
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'slime-repl-mode))
+
+(add-hook 'python-mode-hook 'ac-anaconda-setup)
+(add-hook 'some-mode-hook 'ac-ispell-ac-setup)
 
 ;; yasnippet
 (require 'yasnippet)
@@ -21,6 +35,8 @@
 (yas-load-directory "~/.emacs.d/snippets")
 (add-hook 'term-mode-hook (lambda()
                             (setq yas-dont-activate t)))
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . tj-mode))
 
 ;; js2-mode
 (require 'js2-mode)
@@ -32,7 +48,7 @@
 
 (require 'slim-mode)
 
-(custom-set-variables '(coffee-tab-width 2))
+(custom-set-variables '(coffee-tab-width 4))
 ;; visual-regexp
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
@@ -75,11 +91,11 @@
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
 (setq web-mode-enable-current-element-highlight t)
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-(setq web-mode-style-padding 1)
-(setq web-mode-enable-current-column-highlight t)
+;; (setq web-mode-markup-indent-offset 2)
+;; (setq web-mode-css-indent-offset 2)
+;; (setq web-mode-code-indent-offset 2)
+;; (setq web-mode-style-padding 1)
+;; (setq web-mode-enable-current-column-highlight t)
 (custom-set-faces
  '(web-mode-current-element-highlight-face
    ((t (:foreground "#E65100"))))
@@ -87,24 +103,34 @@
 
 
 ;; emmet-mode
+(add-to-list 'load-path "~/.emacs.d/emmet-mode")
 (require 'emmet-mode)
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 (setq emmet-move-cursor-between-quotes t) ;; default nil
 
+(require 'ac-emmet) ;; Not necessary if using ELPA package
+(add-hook 'sgml-mode-hook 'ac-emmet-html-setup)
+(add-hook 'css-mode-hook 'ac-emmet-css-setup)
+(add-hook 'web-mode-hook 'ac-emmet-html-setup)
+(add-hook 'scss-mode-hook 'ac-emmet-css-setup)
 
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (defun scss-custom ()
   "scss-mode-hook"
   (and
-   (set (make-local-variable 'css-indent-offset) 2)
+   ;;(set (make-local-variable 'css-indent-offset) 2)
    (set (make-local-variable 'scss-compile-at-save) nil)
    )
   )
 (add-hook 'scss-mode-hook
           '(lambda() (scss-custom)))
+
+;; (require 'flymake-sass)
+;;   (add-hook 'sass-mode-hook 'flymake-sass-load)
+;;   (add-hook 'scss-mode-hook 'flymake-sass-load)
 
 ;; less-mode
 
@@ -116,6 +142,8 @@
 (require 'popwin)
 (popwin-mode 1)
 
+;; helm
+(require 'helm)
 (defcustom helm-for-files-preferred-list
   '(helm-source-buffers-list
     helm-source-recentf
@@ -140,6 +168,25 @@
 (push '("*helm mini*" :height 20) popwin:special-display-config)
 (push '("*Helm Find Files*" :height 20) popwin:special-display-config)
 
+(require 'helm-css-scss)
+
+;; Allow comment inserting depth at each end of a brace
+(setq helm-css-scss-insert-close-comment-depth 2)
+;; If this value is t, split window appears inside the current window
+(setq helm-css-scss-split-with-multiple-windows nil)
+;; Split direction. 'split-window-vertically or 'split-window-horizontally
+(setq helm-css-scss-split-direction 'split-window-vertically)
+
+;; Set local keybind map for css-mode / scss-mode / less-css-mode
+(dolist ($hook '(css-mode-hook scss-mode-hook less-css-mode-hook))
+  (add-hook
+   $hook (lambda ()
+           (local-set-key (kbd "s-i") 'helm-css-scss)
+           (local-set-key (kbd "s-I") 'helm-css-scss-back-to-last-point))))
+
+(define-key isearch-mode-map (kbd "s-i") 'helm-css-scss-from-isearch)
+(define-key helm-css-scss-map (kbd "s-i") 'helm-css-scss-multi-from-helm-css-scss)
+
 ;; built-in
 (require 'bs)
 (setq bs-configurations
@@ -147,26 +194,17 @@
 
 (global-set-key (kbd "C-c <f2>") 'bs-show)
 
-;; (require 'linum+)
-;; (setq linum-format " %d ")
-;; (global-linum-mode 1)
-
-;; (require 'hlinum)
-;; (hlinum-activate)
 (global-linum-mode 1)
-;; (setq linum-format " %d ")
 (setq linum-format "%4d \u2502")
+
 ;; project 
 
-(add-to-list 'load-path "~/emacs.d/")
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-indexing-method 'native)
 (setq projectile-enable-caching t)
 (setq projectile-completion-system 'default)
-
-;; (require 'powerline)
-;; (powerline-default-theme)
+(setq projectile-completion-system 'grizzl)
 
 (eval-after-load 'js2-mode
   '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
@@ -229,6 +267,7 @@
 (require 'tern-auto-complete)
 
 (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+
 (eval-after-load 'tern
   '(progn
      (require 'tern-auto-complete)
@@ -237,11 +276,29 @@
 (setq projectile-switch-project-action 'projectile-dired)
 (setq projectile-switch-project-action 'projectile-find-dir)
 
-(require 'golden-ratio)
-(golden-ratio-mode 1)
-
-;; (require 'neotree)
-;; (global-set-key [f8] 'neotree-toggle)
+;; (require 'golden-ratio)
+;; (golden-ratio-mode 1)
 
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
+
+(require 'pabbrev)
+
+(require 'autopair)
+(autopair-global-mode 1)
+
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
+(require 'editorconfig)
+(editorconfig-mode 1)
+
+(require 'find-file-in-project)
+
+(require 'neotree)
+(setq neo-smart-open t)
+(global-set-key [f8] 'neotree-toggle)
+
+(setq projectile-switch-project-action 'neotree-projectile-action)
+
+

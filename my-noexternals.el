@@ -5,7 +5,7 @@
 (setq use-dialog-box nil)
 
 ;; Remove scrollbars, menu bars, and toolbars
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;; (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
@@ -13,7 +13,7 @@
 (setq create-lockfiles nil)
 
 ;; electric pair
-(electric-pair-mode 1)
+;; (electric-pair-mode 1)
 
 ;; no startup msg  
 (setq inhibit-startup-message t) 
@@ -39,16 +39,16 @@
 ;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-9"))
 ;; (set-default-font "DejaVu Sans Mono-9")
 
-;; (add-to-list 'default-frame-alist '(font . "Ubuntu Mono 11"))
-;; (set-default-font "Ubuntu Mono 11")
+;; (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10"))
+;; (set-default-font "Ubuntu Mono-10")
 
 ;; (add-to-list 'default-frame-alist '(font . "Anonymous Pro-11"))
 ;; (set-default-font "Anonymous Pro-11")
 
-(add-to-list 'default-frame-alist '(font . "Liberation Mono-9"))
-(set-default-font "Liberation Mono-9")
-
-;; transparent 
+(add-to-list 'default-frame-alist '(font . "Liberation Mono-10"))
+(set-default-font "Liberation Mono-10")
+(setq-default line-spacing 1)
+(setq line-spacing 0.5)
 
 ;;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;;(add-to-list 'default-frame-alist '(alpha 85 50))
